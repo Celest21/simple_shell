@@ -1,6 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+/*libraries*/
+
+
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -8,17 +11,17 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/wait.h>
+/*prototypes*/
 
 void display_prompt(const char *prompt);
 void interactive_mode(const char *prompt);
 void non_interactive_mode(void);
 void execute_user_command(const char *command);
 int execute_using_execve(const char *command, char *const args[]);
-ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
-char *str_tok(char *str, const char *delim);
-void execute_env_command(void);
-
+void read_and_execute_script(const char *script_filename);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 extern char **environ;
-
+char *strtok(char *str, const char *delim);
+int _putchar(char c);
 #endif
 
