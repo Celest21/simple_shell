@@ -15,18 +15,18 @@ void execute_user_command(const char *command)
 	char *command_copy = strdup(command);
 	char *token = strtok(command_copy, " ");
 	int status = 0;
-	
+
 	if (token != NULL)
 	{
 		char *cmd = token;
-		
+
 		/*array to hold cmmand and its argument*/
-		
+
 		char *args[100];
 		int arg_index = 0;
-		
+
 		args[arg_index++] = cmd;
-		
+
 		while ((token = strtok(NULL, " ")) != NULL)
 		{
 			args[arg_index++] = token;
@@ -78,7 +78,7 @@ void execute_user_command(const char *command)
 			status = execute_using_execve(cmd, args);
 		}
 	}
-	
+
 	if (status == -1)
 	{
 		perror("execute_using_execve");
